@@ -17,8 +17,39 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 //home route
-app.get('/', function(req, res){    
-    res.render('index');
+app.get('/', function(req, res){  
+    let articles = [
+        {
+            id:1,
+            title: 'Article One',
+            author: 'Eva Cheong',
+            body: 'This is article one'
+        },
+        {
+            id:2,
+            title: 'Article Two',
+            author: 'Lester Goh',
+            body: 'This is article two'
+        },
+        {
+            id:3,
+            title: 'Article Three',
+            author: 'Evelyn Ting',
+            body: 'This is article three'
+        }
+    ];
+    
+    res.render('index', {
+        title: 'Articles',
+        articles: articles
+    });
+});
+
+//add route
+app.get('/articles/add', function(req, res){
+    res.render('add_article', {
+        title: 'Add Article'
+    });
 });
 
 //start server
